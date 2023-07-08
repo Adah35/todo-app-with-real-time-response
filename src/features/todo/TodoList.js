@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FaUpload, FaTrash } from 'react-icons/fa'
+import { ImSpinner } from 'react-icons/im'
 import { io } from 'socket.io-client'
 const socket = io.connect('http://localhost:3500')
 
@@ -59,7 +60,7 @@ const TodoList = () => {
     };
 
     console.log(newTodo)
-    const content = todo?.map((todo, i) => {
+    const content = todo.length ? todo?.map((todo, i) => {
         return (
             <li key={todo._id} className='flex items-center justify-between px-4 py-2 bg-gray-700 text-white rounded-md shadow-lg'>
 
@@ -82,7 +83,7 @@ const TodoList = () => {
             </li>
 
         )
-    }).sort((a, b) => a.createdAt - b.createdAt)
+    }) : <ImSpinner className='mx-auto animate-spin text-violet-700 text-4xl mt-[200px]' />
     return (
         <div className='bg-gray-900 h-[100vh] mx-auto px-4 py-8'>
             <div className='max-w-3xl mx-auto'>
