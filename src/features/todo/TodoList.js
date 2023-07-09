@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { FaUpload, FaTrash } from 'react-icons/fa'
 import { ImSpinner } from 'react-icons/im'
 import { io } from 'socket.io-client'
-const socket = io.connect('http://localhost:3500')
+const socket = io.connect('https://todo-app-api-bp9p.onrender.com')
 
 const TodoList = () => {
     const [todo, setTodo] = useState([])
